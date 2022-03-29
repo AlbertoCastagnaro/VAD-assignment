@@ -45,6 +45,8 @@ int main() {
     ifstream ifs("inputaudio"+ to_string(fileNum)+".data",ifstream::binary);
     ofstream ofs("outputVAD"+ to_string(fileNum)+".data",ifstream::binary);
     ofstream validation("outputVAD"+ to_string(fileNum)+".txt");
+    //variable used to consider a non valid sample if the sample before it is valid
+    bool beforeValid=false;
     //processing
     while(ifs.good()){
         vector<complex<double>> v;
@@ -70,8 +72,10 @@ int main() {
       validation.put('\n');
       //write in ofs the original file if it is in range, all zero otherwise
       for(auto i: write){
-          if(isInRange) ofs.write((char*)&i,sizeof(i));
-          else{
+          if(isInRange || (!isInRange && beforeValid)) {
+              ofs.write((char *) &i, sizeof(i));
+              if(!isInRange) beforeValid=false;
+          }else{
               signed char tmp=0;
               ofs.write((char*)&tmp,sizeof(tmp));
           }
