@@ -1,0 +1,3 @@
+C:/Users/Alberto/CLionProjects/Hw1Multimedia/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Alberto/CLionProjects/Hw1Multimedia/cmake-build-debug/CMakeFiles/Hw1Multimedia.dir
+C:/Users/Alberto/CLionProjects/Hw1Multimedia/cmake-build-debug/CMakeFiles/rebuild_cache.dir
